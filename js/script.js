@@ -62,6 +62,9 @@ function renderPortfolio(data) {
    document.getElementById("contactLocation").textContent = "Location: " + data.contact.location;
   }
   if (document.getElementById("linkedinLink")) document.getElementById("linkedinLink").href = data.contact.linkedin;
+  if (document.getElementById("facebookLink") && data.contact.facebook) {
+  document.getElementById("facebookLink").href = data.contact.facebook;
+}
   if (document.getElementById("footerText")) {
    document.getElementById("footerText").textContent = "\u00A9 " + new Date().getFullYear() + " " + data.name + " | Student Portfolio";
   }
