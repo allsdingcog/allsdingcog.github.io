@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <meta name="description" content="Student portfolio showcasing skills, projects, and achievements.">
+ <title>Allan Dingcog Portfolio</title>
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+ <link rel="stylesheet" href="css/style.css">
+ <script src="js/script.js" defer></script>
+</head>
+<body>
+ <header class="site-header">
+  <nav class="navbar">
+   <div class="nav-top-row">
+    <a class="logo" href="#home">MyPortfolio</a>
+    <button id="themeToggle" class="theme-toggle-btn" aria-label="Toggle light and dark mode">☀️</button>
+   </div>
+   <ul class="nav-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+   </ul>
+  </nav>
+ </header>
+
+ <main>
+  <section id="home" class="hero">
+   <div class="hero-content">
+    <p class="eyebrow">PORTFOLIO</p>
+    <h1><span id="studentName">Allan . Dingcog</span></h1>
+    <h2 id="tagline">Network And Security Management Track</h2>
+    <p id="introduction">I enjoy learning about technology and networking</p>
+    <div class="hero-actions">
+     <a class="btn btn-outline" href="#projects">View My Projects</a>
+     <a class="btn btn-outline" href="#contact">Contact Me</a>
+    </div>
+   </div>
+  
+   <img  src="aaa.jpg" alt="Picture of Allan Dingcog">
+  </section>
+
+  <section id="about" class="section">
+   <h2 class="section-title">About Me</h2>
+   <div class="about-content">
+    <p id="biography">Allan Dingcog a second year BS Information Technology major in Network And Security Track student at Nueva Vizcaya State University</p>
+    <div class="information-card">
+     <h3>Educational Background</h3>
+     <p>Elementary: Bahong Elementary School</p>
+     <p>Senior High School: Tublay School of Home Industries</p>
+     <p>College: Nueva Vizcaya State University - Present</p>
+     <p id="education"></p>
+     <p id="graduation"></p>
+
+     <h3>Career Goal</h3>
+     <p id="careerGoal">To become a professional in the field of network and security management.</p>
+
+     <h3>Interests</h3>
+     <p id="interests">Network Troubleshooting, Network Cabling, Databases, playing sports like badminton, basketball, etc.</p>
+    </div>
+   </div>
+  </section>
+
+  <section id="skills" class="section alternate">
+   <h2 class="section-title">My Skills</h2>
+   <p class="section-description">Technologies and competencies I continue to develop.</p>
+   <div id="skillsContainer" class="skills-grid"></div>
+  </section>
+
+  <section id="projects" class="section">
+   <h2 class="section-title">My Projects</h2>
+   <p class="section-description">Academic and personal projects I have worked on.</p>
+   <div id="projectsMessage" class="status-message" aria-live="polite"></div>
+   <div id="projectsContainer" class="projects-grid"></div>
+   <div class="github-section">
+    <h3>Latest GitHub Repositories</h3>
+    <p class="section-description">My five most recently updated public repositories.</p>
+    <div id="githubMessage" class="status-message" aria-live="polite"></div>
+    <ul id="githubRepos" class="repository-list"></ul>
+    <a id="githubProfile" class="text-link" href="https://github.com/" target="_blank" rel="noopener noreferrer">Visit My GitHub Profile</a>
+   </div>
+  </section>
+
+  <section id="contact" class="section alternate">
+   <h2 class="section-title">Contact Me</h2>
+   <p class="section-description">Contact me about collaboration, projects, or opportunities.</p>
+   <div class="contact-details">
+    <p>Email: <a id="contactEmail" href="mailto:alls.dingcog@gmail.com">alls.dingcog@gmail.com</a></p>
+    <p>Contact Number: +639542266303</p>
+    <p id="contactLocation"></p>
+    <p><a id="linkedinLink" href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">LinkedIn Profile</a></p>
+   </div>
+   <form id="contactForm" class="contact-form">
+    <label for="visitorName">Your Name</label>
+    <input type="text" id="visitorName" name="visitorName" required minlength="2">
+    
+    <label for="visitorEmail">Your Email</label>
+    <input type="email" id="visitorEmail" name="visitorEmail" required>
+    
+    <label for="visitorMessage">Your Message</label>
+    <textarea id="visitorMessage" name="visitorMessage" rows="5" required minlength="10"></textarea>
+    
+    <button type="submit" class="btn">Submit Message</button>
+    <p id="formFeedback" role="status" aria-live="polite"></p>
+   </form>
+  </section>
+ </main>
+
+ <footer>
+  <p id="footerText">&copy; 2026 My Student Portfolio</p>
+ </footer>
+ <button id="backToTop" class="back-to-top" type="button" aria-label="Back to top">↑ Top</button>
+</body>
+</html>

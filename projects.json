@@ -1,0 +1,39 @@
+{
+  "name": "Allan Dingcog",
+  "tagline": "Network And Security Management Track",
+  "introduction": "I enjoy learning about technology and networking",
+  "profileImage": "images/profile.jpg",
+  "about": {
+    "biography": "Allan Dingcog is a second-year BS Information Technology major in the Network and Security track at Nueva Vizcaya State University.",
+    "school": "",
+    "program": "Bachelor of Science in Information Technology",
+   
+    "careerGoal": "To become a professional in the field of network and security management.",
+    "interests": "Network Troubleshooting, Network Cabling, Databases, playing sports like badminton, basketball, etc."
+  },
+  "skills": ["HTML", "CSS", "JavaScript", "Java", "MySQL", "Problem Solving", "Networking", "Troubleshooting"],
+  "projects": [
+    {
+      "title": "Personal Portfolio",
+      "description": "A responsive website presenting my profile, skills, and academic work.",
+      "technologies": "HTML, CSS, JavaScript",
+      "role": "Designed and developed the website.",
+      "image": "images/portfolio.png",
+      "link": "https://github.com/allsdingcog/personalportfolio.git"
+    },
+    {
+      "title": "Network Troubleshooting Guide",
+      "description": "A documentation and script repository for diagnosing common local area network issues.",
+      "technologies": "Markdown, Python, Bash",
+      "role": "Authored troubleshooting steps and automated basic connectivity tests.",
+      "image": "images/network.png",
+      "link": "https://github.com/allsdingcog/network-troubleshooting"
+    }
+  ],
+  "githubUsername": "allsdingcog",
+  "contact": {
+    "email": "alls.dingcog@gmail.com",
+    "location": "Nueva Vizcaya, Philippines",
+    "linkedin": "https://www.linkedin.com/"
+  }
+}
