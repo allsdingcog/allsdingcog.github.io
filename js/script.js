@@ -1,13 +1,6 @@
 "use strict";
-document.addEventListener("DOMContentLoaded", function () {
- setupThemeToggle();
- loadPortfolio();
- setupContactForm();
- setupBackToTop();
-});
 
-// Built-in fallback data to guarantee projects & skills load offline or locally without CORS issues
-const fallbackPortfolioData = {
+const portfolioData = {
  "name": "Allan . Dingcog",
  "tagline": "Network And Security Management Track",
  "introduction": "I enjoy learning about technology and networking",
@@ -39,39 +32,15 @@ const fallbackPortfolioData = {
  }
 };
 
-function setupThemeToggle() {
- const toggleBtn = document.getElementById("themeToggle");
- const htmlElement = document.documentElement;
- 
- const savedTheme = localStorage.getItem("portfolio_theme") || "dark";
- htmlElement.setAttribute("data-theme", savedTheme);
- toggleBtn.textContent = savedTheme === "dark" ? "☀️" : "🌙";
+document.addEventListener("DOMContentLoaded", function () {
+ setupThemeToggle();
+ renderPortfolio(portfolioData);
+ tryFetchJSON();
+ setupContactForm();
+ setupBackToTop();
+});
 
- toggleBtn.addEventListener("click", function () {
-  const currentTheme = htmlElement.getAttribute("data-theme");
-  const newTheme = currentTheme === "dark" ? "light" : "dark";
-  
-  htmlElement.setAttribute("data-theme", newTheme);
-  localStorage.setItem("portfolio_theme", newTheme);
-  toggleBtn.textContent = newTheme === "dark" ? "☀️" : "🌙";
- });
-}
-
-async function loadPortfolio() {
- const projectsMessage = document.getElementById("projectsMessage");
- let data = fallbackPortfolioData;
-
- try {
-  // Sinusubukang i-fetch ang JSON file sa data/ or root directory
-  const response = await fetch("data/projects.json").catch(() => fetch("projects.json"));
-  if (response && response.ok) {
-   data = await response.json();
-  }
- } catch (error) {
-  console.warn("Using fallback portfolio data due to fetch error/CORS restriction:", error);
- }
-
- // Render data
+function renderPortfolio(data) {
  try {
   if (document.getElementById("studentName")) document.getElementById("studentName").textContent = data.name;
   if (document.getElementById("tagline")) document.getElementById("tagline").textContent = data.tagline;
@@ -100,15 +69,27 @@ async function loadPortfolio() {
   displaySkills(data.skills);
   displayProjects(data.projects);
   loadGitHubRepositories(data.githubUsername);
- } catch (renderError) {
-  console.error("Rendering error:", renderError);
-  if (projectsMessage) projectsMessage.textContent = "Error rendering portfolio components.";
+ } catch (e) {
+  console.error("Error rendering portfolio:", e);
+ }
+}
+
+async function tryFetchJSON() {
+ try {
+  let res = await fetch("projects.json");
+  if (!res.ok) res = await fetch("data/projects.json");
+  if (res.ok) {
+   const freshData = await res.json();
+   renderPortfolio(freshData);
+  }
+ } catch (err) {
+  console.log("Using default embedded portfolio data.");
  }
 }
 
 function displaySkills(skills) {
  const container = document.getElementById("skillsContainer");
- if (!container) return;
+ if (!container || !Array.isArray(skills)) return;
  container.replaceChildren();
  skills.forEach(function (skill) {
   const card = document.createElement("div");
@@ -210,6 +191,26 @@ async function loadGitHubRepositories(username) {
  } catch (error) {
   console.error("GitHub API error:", error);
   if (message) message.textContent = "GitHub repositories are unavailable or rate-limited.";
+ }
+}
+
+function setupThemeToggle() {
+ const toggleBtn = document.getElementById("themeToggle");
+ const htmlElement = document.documentElement;
+ 
+ const savedTheme = localStorage.getItem("portfolio_theme") || "dark";
+ htmlElement.setAttribute("data-theme", savedTheme);
+ if (toggleBtn) toggleBtn.textContent = savedTheme === "dark" ? "☀️" : "🌙";
+
+ if (toggleBtn) {
+  toggleBtn.addEventListener("click", function () {
+   const currentTheme = htmlElement.getAttribute("data-theme");
+   const newTheme = currentTheme === "dark" ? "light" : "dark";
+   
+   htmlElement.setAttribute("data-theme", newTheme);
+   localStorage.setItem("portfolio_theme", newTheme);
+   toggleBtn.textContent = newTheme === "dark" ? "☀️" : "🌙";
+  });
  }
 }
 
