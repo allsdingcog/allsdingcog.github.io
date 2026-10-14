@@ -29,16 +29,8 @@ const fallbackPortfolioData = {
    "role": "Designed and developed the website.",
    "image": "images/portfolio.png",
    "link": "https://github.com/allsdingcog/personalportfolio.git"
-  },
-  {
-   "title": "Network Troubleshooting Guide",
-   "description": "A documentation and script repository for diagnosing common local area network issues.",
-   "technologies": "Markdown, Python, Bash",
-   "role": "Authored troubleshooting steps and automated basic connectivity tests.",
-   "image": "images/network.png",
-   "link": "https://github.com/allsdingcog/network-troubleshooting"
   }
- ],
+ 
  "githubUsername": "allsdingcog",
  "contact": {
   "email": "alls.dingcog@gmail.com",
