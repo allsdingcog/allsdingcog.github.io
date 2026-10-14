@@ -1,13 +1,13 @@
 {
-  "name": "Allan Dingcog",
+  "name": "Allan . Dingcog",
   "tagline": "Network And Security Management Track",
   "introduction": "I enjoy learning about technology and networking",
-  "profileImage": "images/profile.jpg",
+  "profileImage": "aaa.jpg",
   "about": {
-    "biography": "Allan Dingcog  a second-year BS Information Technology major in the Network and Security track at Nueva Vizcaya State University.",
-    "school": "",
+    "biography": "Allan Dingcog a second year BS Information Technology major in Network And Security Track student at Nueva Vizcaya State University",
+    "school": "Nueva Vizcaya State University",
     "program": "Bachelor of Science in Information Technology",
-   
+    "graduation": "",
     "careerGoal": "To become a professional in the field of network and security management.",
     "interests": "Network Troubleshooting, Network Cabling, Databases, playing sports like badminton, basketball, etc."
   },
@@ -18,10 +18,10 @@
       "description": "A responsive website presenting my profile, skills, and academic work.",
       "technologies": "HTML, CSS, JavaScript",
       "role": "Designed and developed the website.",
-      "image": "images/portfolio.png",
+      "image": "portfolio.png",
       "link": "https://github.com/allsdingcog/personalportfolio.git"
     }
-
+  ],
   "githubUsername": "allsdingcog",
   "contact": {
     "email": "alls.dingcog@gmail.com",
