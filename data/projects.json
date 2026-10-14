@@ -20,10 +20,8 @@
       "role": "Designed and developed the website.",
       "image": "images/portfolio.png",
       "link": "https://github.com/allsdingcog/personalportfolio.git"
-    },
-  
-   
-  ],
+    }
+
   "githubUsername": "allsdingcog",
   "contact": {
     "email": "alls.dingcog@gmail.com",
