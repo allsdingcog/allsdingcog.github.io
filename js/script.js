@@ -8,17 +8,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // Built-in fallback data to guarantee projects & skills load offline or locally without CORS issues
 const fallbackPortfolioData = {
- "name": "Allan Dingcog",
- "tagline": "Aspiring Web Developer",
- "introduction": "I am an IT student interested in web development and useful digital solutions.",
- "profileImage": "images/profile.jpg",
+ "name": "Allan . Dingcog",
+ "tagline": "Network And Security Management Track",
+ "introduction": "I enjoy learning about technology and networking",
+ "profileImage": "aaa.jpg",
  "about": {
-  "biography": "I enjoy learning programming, exploring technology, and developing practical applications.",
+  "biography": "Allan Dingcog a second year BS Information Technology major in Network And Security Track student at Nueva Vizcaya State University",
   "school": "Nueva Vizcaya State University",
   "program": "Bachelor of Science in Information Technology",
-  "graduation": "Expected graduation: 2027",
-  "careerGoal": "To become a professional software developer and network specialist.",
-  "interests": "Web development, databases, UI design, and problem solving."
+  "graduation": "",
+  "careerGoal": "To become a professional in the field of network and security management.",
+  "interests": "Network Troubleshooting, Network Cabling, Databases, playing sports like badminton, basketball, etc."
  },
  "skills": ["HTML", "CSS", "JavaScript", "Java", "MySQL", "Problem Solving", "Networking", "Troubleshooting"],
  "projects": [
@@ -27,10 +27,10 @@ const fallbackPortfolioData = {
    "description": "A responsive website presenting my profile, skills, and academic work.",
    "technologies": "HTML, CSS, JavaScript",
    "role": "Designed and developed the website.",
-   "image": "images/portfolio.png",
+   "image": "portfolio.png",
    "link": "https://github.com/allsdingcog/personalportfolio.git"
   }
- 
+ ],
  "githubUsername": "allsdingcog",
  "contact": {
   "email": "alls.dingcog@gmail.com",
@@ -62,8 +62,9 @@ async function loadPortfolio() {
  let data = fallbackPortfolioData;
 
  try {
-  const response = await fetch("data/projects.json");
-  if (response.ok) {
+  // Sinusubukang i-fetch ang JSON file sa data/ or root directory
+  const response = await fetch("data/projects.json").catch(() => fetch("projects.json"));
+  if (response && response.ok) {
    data = await response.json();
   }
  } catch (error) {
@@ -72,35 +73,36 @@ async function loadPortfolio() {
 
  // Render data
  try {
-  document.getElementById("studentName").textContent = data.name;
-  document.getElementById("tagline").textContent = data.tagline;
-  document.getElementById("introduction").textContent = data.introduction;
+  if (document.getElementById("studentName")) document.getElementById("studentName").textContent = data.name;
+  if (document.getElementById("tagline")) document.getElementById("tagline").textContent = data.tagline;
+  if (document.getElementById("introduction")) document.getElementById("introduction").textContent = data.introduction;
   
   const profileImg = document.getElementById("profileImage");
   if (profileImg && data.profileImage) {
    profileImg.src = data.profileImage;
   }
 
-  document.getElementById("biography").textContent = data.about.biography;
-  document.getElementById("education").textContent =
-   data.about.program + " - " + data.about.school;
-  document.getElementById("graduation").textContent = data.about.graduation;
-  document.getElementById("careerGoal").textContent = data.about.careerGoal;
-  document.getElementById("interests").textContent = data.about.interests;
-  document.getElementById("contactEmail").textContent = data.contact.email;
-  document.getElementById("contactEmail").href = "mailto:" + data.contact.email;
-  document.getElementById("contactLocation").textContent =
-   "Location: " + data.contact.location;
-  document.getElementById("linkedinLink").href = data.contact.linkedin;
-  document.getElementById("footerText").textContent =
-   "\u00A9 " + new Date().getFullYear() + " " + data.name + " | Student Portfolio";
+  if (document.getElementById("biography")) document.getElementById("biography").textContent = data.about.biography;
+  if (document.getElementById("careerGoal")) document.getElementById("careerGoal").textContent = data.about.careerGoal;
+  if (document.getElementById("interests")) document.getElementById("interests").textContent = data.about.interests;
+  if (document.getElementById("contactEmail")) {
+   document.getElementById("contactEmail").textContent = data.contact.email;
+   document.getElementById("contactEmail").href = "mailto:" + data.contact.email;
+  }
+  if (document.getElementById("contactLocation") && data.contact.location) {
+   document.getElementById("contactLocation").textContent = "Location: " + data.contact.location;
+  }
+  if (document.getElementById("linkedinLink")) document.getElementById("linkedinLink").href = data.contact.linkedin;
+  if (document.getElementById("footerText")) {
+   document.getElementById("footerText").textContent = "\u00A9 " + new Date().getFullYear() + " " + data.name + " | Student Portfolio";
+  }
    
   displaySkills(data.skills);
   displayProjects(data.projects);
   loadGitHubRepositories(data.githubUsername);
  } catch (renderError) {
   console.error("Rendering error:", renderError);
-  projectsMessage.textContent = "Error rendering portfolio components.";
+  if (projectsMessage) projectsMessage.textContent = "Error rendering portfolio components.";
  }
 }
 
@@ -122,16 +124,16 @@ function displayProjects(projects) {
  if (!container) return;
  container.replaceChildren();
  if (!Array.isArray(projects) || projects.length === 0) {
-  message.textContent = "No projects are available at the moment.";
+  if (message) message.textContent = "No projects are available at the moment.";
   return;
  }
- message.textContent = "";
+ if (message) message.textContent = "";
  projects.forEach(function (project) {
   const card = document.createElement("article");
   card.className = "project-card";
   
   const image = document.createElement("img");
-  image.src = project.image || "images/portfolio.png";
+  image.src = project.image || "portfolio.png";
   image.alt = "Screenshot of " + project.title;
   image.loading = "lazy";
   
@@ -174,10 +176,10 @@ async function loadGitHubRepositories(username) {
  container.replaceChildren();
  
  if (!username || username === "yourusername") {
-  message.textContent = "Update githubUsername in projects.json to your actual username.";
+  if (message) message.textContent = "Update githubUsername in projects.json to your actual username.";
   return;
  }
- profileLink.href = "https://github.com/" + encodeURIComponent(username);
+ if (profileLink) profileLink.href = "https://github.com/" + encodeURIComponent(username);
  try {
   const apiURL = "https://api.github.com/users/" +
    encodeURIComponent(username) +
@@ -186,10 +188,10 @@ async function loadGitHubRepositories(username) {
   if (!response.ok) throw new Error("GitHub API request failed");
   const repositories = await response.json();
   if (repositories.length === 0) {
-   message.textContent = "No public repositories were found.";
+   if (message) message.textContent = "No public repositories were found.";
    return;
   }
-  message.textContent = "";
+  if (message) message.textContent = "";
   repositories.forEach(function (repo) {
    const item = document.createElement("li");
    const link = document.createElement("a");
@@ -207,7 +209,7 @@ async function loadGitHubRepositories(username) {
   });
  } catch (error) {
   console.error("GitHub API error:", error);
-  message.textContent = "GitHub repositories are unavailable or rate-limited.";
+  if (message) message.textContent = "GitHub repositories are unavailable or rate-limited.";
  }
 }
 
@@ -219,17 +221,19 @@ function setupContactForm() {
   event.preventDefault();
   if (!form.checkValidity()) {
    form.reportValidity();
-   feedback.textContent = "Please complete all fields correctly.";
+   if (feedback) feedback.textContent = "Please complete all fields correctly.";
    return;
   }
   const visitorName = document.getElementById("visitorName").value.trim();
   const visitorMessage = document.getElementById("visitorMessage").value.trim();
   if (visitorName.length < 2 || visitorMessage.length < 10) {
-   feedback.textContent = "Enter a valid name and a message of at least 10 characters.";
+   if (feedback) feedback.textContent = "Enter a valid name and a message of at least 10 characters.";
    return;
   }
-  feedback.textContent = "Thank you, " + visitorName +
-   "! Your form passed validation. No message was sent because this is a static website.";
+  if (feedback) {
+   feedback.textContent = "Thank you, " + visitorName +
+    "! Your form passed validation. No message was sent because this is a static website.";
+  }
   form.reset();
  });
 }
