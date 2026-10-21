@@ -21,7 +21,7 @@ const portfolioData = {
    "technologies": "HTML, CSS, JavaScript",
    "role": "Designed and developed the website.",
    "image": "portfolio.png",
-   "link": "https://github.com/allsdingcog/personalportfolio.git"
+   "link": "https://github.com/allsdingcog/allsdingcog.github.io"
   }
  ],
  "githubUsername": "allsdingcog",
