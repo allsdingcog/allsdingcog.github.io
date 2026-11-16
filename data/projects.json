@@ -21,6 +21,14 @@
       "image": "portfolio.png",
       "link": "https://github.com/allsdingcog/allsdingcog.github.io"
     }
+    {
+   "title": "Laundry Tracker",
+   "description": "A single-page web app that helps dorm students keep track of laundry loads: when each load was dropped off, when it is due for pickup, and what it cost..",
+   "technologies": "Plain HTML, CSS, and vanilla JavaScript: index.html, styles.css, app.js. No build step, no dependencies. The Nunito font loads from Google Fonts, with a system font fallback.",
+   "role": "Designed and developed the website.",
+   "image": "portfolio.png",
+   "link": "https://laundry-tracker-allan.netlify.app"
+  }
   ],
   "githubUsername": "allsdingcog",
   "contact": {
