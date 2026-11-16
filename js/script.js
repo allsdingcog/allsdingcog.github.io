@@ -22,7 +22,7 @@ const portfolioData = {
    "role": "Designed and developed the website.",
    "image": "portfolio.png",
    "link": "https://github.com/allsdingcog/allsdingcog.github.io"
-  }
+  },
   {
    "title": "Laundry Tracker",
    "description": "A single-page web app that helps dorm students keep track of laundry loads: when each load was dropped off, when it is due for pickup, and what it cost..",
