@@ -26,7 +26,7 @@
    "description": "A mobile-first web app for dorm students to track laundry loads from drop-off to pickup, with status tracking, overdue countdowns, and monthly spending history.",
    "technologies": "HTML, CSS, JavaScript (vanilla), localStorage. Deployed on Netlify.",
    "role": "Designed and developed the website.",
-   "image": "portfolio.png",
+   "image": "laundrytracker.png",
    "link": "https://laundry-tracker-allan.netlify.app"
   }
   ],
